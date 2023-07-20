@@ -1,0 +1,89 @@
+<app-auth-layout>
+    <h1>Register</h1>
+    <p>Let's get you all set up</p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-6 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" name="firstName" matInput formControlName="firstName" autocomplete="off">
+                    <mat-error *ngIf="form.controls.firstName.hasError('required')">
+                        First Name is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="!form.controls.firstName.hasError('required') && !form.controls.firstName.valid">
+                        input <strong>invalid</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" name="lastName" matInput formControlName="lastName">
+                    <mat-error *ngIf="form.controls.lastName.hasError('required')">
+                        Last Name is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="!form.controls.lastName.hasError('required') && !form.controls.lastName.valid">
+                        input <strong>invalid</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input type="text" name="phoneNumber" matInput formControlName="phoneNumber" autocomplete="off">
+                    <mat-error *ngIf="form.controls.phoneNumber.hasError('required')">
+                        Phone Number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="!form.controls.phoneNumber.hasError('required') && !form.controls.phoneNumber.valid && !form.controls.phoneNumber.hasError('maxlength')">
+                        input <strong>invalid</strong>
+                    </mat-error>
+                    <mat-error *ngIf="!form.controls.phoneNumber.hasError('required') && form.controls.phoneNumber.hasError('maxlength')">
+                        Can't more than <strong>15</strong> length
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="text" name="email" matInput formControlName="email">
+                    <mat-error *ngIf="form.controls.email.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="form.controls.email.hasError('email')">
+                        Must be valid <strong>email</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" matInput formControlName="password">
+                    <mat-error *ngIf="form.controls.password.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6 size-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm</mat-label>
+                    <input type="password" name="confirmPassword" matInput formControlName="confirmPassword">
+                    <mat-error *ngIf="form.controls.confirmPassword.hasError('required')">
+                        Confirm is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 size-form cst-hint">
+                <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+            </div>
+            <div class="col-12 mt-2 mb-3">
+                <mat-checkbox class="example-margin">
+                    <span style="white-space: normal; font-size: .9em;">I agree to all the <a href="#">Term, Privacy Policy</a></span>
+                </mat-checkbox>
+            </div>
+            <div class="col-12 mb-1">
+                <button mat-raised-button class="btn-submit" type="submit" color="primary">Create Account</button>
+            </div>
+            <p class="text-center">Already have an account? <a [routerLink]="['/auth/login']">Login</a></p>
+        </div>
+    </form>
+</app-auth-layout>

@@ -1,0 +1,27 @@
+<div class="container-fluid auth-page">
+    <div class="row">
+        <div class="col-12 col-md-5 col-lg-4">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10 cst-card">
+                    <div class="row justify-content-center field-auth">
+                        <div class="col-10 text-center">
+                            <!-- <img src="../../../../assets/images/muf-logo.png" alt="muf-logo"> -->
+                        </div>
+                        <div class="col-10">
+                            <ng-content></ng-content>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center sign">
+                    <p>©{{todayDate | date:'yyyy'}} Angular - All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-inline col-md-7 col-lg-8 bg-auth">
+            <img src="../../../../assets/images/pengajuan.jpg" alt="bg-auth-image">
+            <div>
+                <h1 class="text-end">Dashboard Pengajuan</h1>
+            </div>
+        </div>
+    </div>
+</div>

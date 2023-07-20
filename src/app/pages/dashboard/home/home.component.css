@@ -1,0 +1,97 @@
+.main-home {
+    width: 100%; 
+    height:100%; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: end; 
+    position: relative;
+}
+
+.cvr-img {
+    width: 100%; 
+    position: absolute; 
+    top: 5em; 
+    display: flex;
+    flex-direction: column;
+}
+
+.cvr-img .img-slide {
+    background-color: white; 
+    border-radius: .8em; 
+    padding: .5em; 
+    margin: auto;
+}
+
+.cvr-img .img-slide img {
+    display: none;
+}
+
+.cvr-img .img-slide img.image-active {
+    display: block;
+    width: 100%;
+}
+
+.slide-animate {
+    animation-name: slide-animate;
+    animation-duration: 2.5s;
+}
+
+@keyframes slide-animate {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cvr-img .img-indicator {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.cvr-img .img-indicator .dot-indct {
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    margin: 0 .5em;
+    background-color: #204a7e;
+    border-radius: 50%;
+    display: inline-block;
+    transition: opacity 0.6s ease;
+    opacity: 0.4;
+    z-index: 3;
+}
+
+.cvr-img .img-indicator .active,
+.cvr-img .img-indicator .dot-indct:hover {
+    opacity: 1;
+}
+
+.curve {
+    position: relative;
+}
+
+.curve h2 {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 1.2em;
+    margin-bottom: .2em;
+    padding: 0 .8em; 
+    color: #204a7e;
+}
+
+
+/* breakpoint */
+@media (min-width: 992px) {
+    .curve h2 {
+        bottom: 1em; 
+        font-size: 1.5em;
+        margin-bottom: .5em;
+        padding: 0 1em; 
+    }
+}

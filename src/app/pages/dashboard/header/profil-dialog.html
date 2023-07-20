@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Profil</h1>
+<div mat-dialog-content class="profil-dialog">
+    <div class="contianer-fluid">
+        <div class="row">
+            <div class="col-4">
+                <span>Nama</span>
+                <p>{{data.resultUserProfileHeader.fullname}}</p>
+            </div>
+            <div class="col-4">
+                <span>Branch</span>
+                <p>{{data.resultUserProfileLocation[data.resultUserProfileLocation.length - 1].branch_name}}</p>
+            </div>
+            <div class="col-4">
+                <span>Jabatan</span>
+                <p>{{data.resultUserProfileJob[data.resultUserProfileJob.length - 1].job_desc}}</p>
+            </div>
+            <div class="col-4">
+                <span>Address</span>
+                <p>{{data.resultUserProfileLocation[data.resultUserProfileLocation.length - 1].location_name}}</p>
+            </div>
+            <div class="col-4">
+                <span>Email</span>
+                <p>{{data.resultUserProfileHeader.email}}</p>
+            </div>
+        </div>
+    </div>
+</div>

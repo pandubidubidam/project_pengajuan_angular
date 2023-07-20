@@ -1,0 +1,125 @@
+.container {
+  margin: 0 100px;
+}
+
+.header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
+}
+
+.header h2 {
+  font-size: 24px;
+  color: #000000;
+  margin: 0 100px;
+}
+
+.divider {
+  border-bottom: 2px solid #000000;
+  margin: 0 100px;
+}
+
+.content {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  margin: 0 40px;
+}
+
+/* custom table */
+table {
+  width: 100%;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 0 0.8em;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-cell {
+  font-size: 0.8em;
+}
+
+.custom-nodata-ontable {
+  color: #a9a9a9;
+}
+
+/* custom fixed search button */
+.fixed-search {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
+/* persetujuan.component.css */
+
+.mat-paginator {
+  border: 1px solid #ccc;;
+  display: block;
+  background-color: #fff;
+}
+
+.mat-paginator .mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000000; /* Sesuaikan warna dan ketebalan garis sesuai kebutuhan */
+  border-radius: 4px;
+  background-color: #ffffff; /* Sesuaikan warna latar belakang sesuai kebutuhan */
+  padding: 5px; /* Sesuaikan padding sesuai kebutuhan */
+}
+
+.mat-paginator .mat-paginator-range-label,
+.mat-paginator .mat-select {
+  margin-left: 10px;
+}
+
+.mat-paginator .mat-paginator-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-paginator .mat-paginator-navigation button {
+  min-width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions .mat-button-toggle-group {
+  height: 24px;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions .mat-button-toggle {
+  min-width: 30px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions .mat-button-toggle.mat-button-toggle-checked {
+  background-color: #e0e0e0;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions .mat-button-toggle:not(.mat-button-toggle-checked) {
+  background-color: #fff;
+}
+
+.mat-paginator .mat-paginator-navigation .mat-paginator-range-actions .mat-button-toggle:not(:first-child) {
+  border-left: 1px solid #ccc;
+}
+

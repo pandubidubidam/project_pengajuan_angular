@@ -1,0 +1,71 @@
+<div class="header">
+  <!-- Header judul menu -->
+  <h2>Persetujuan</h2>
+</div>
+
+<div class="divider"></div>
+
+<div class="content">
+  <!-- Isi konten -->
+  <div class="content">
+      <!-- Pencarian -->
+      <div class="row justify-content-center mt-1 mt-md-1 mb-1">
+          <div class="col-10 col-sm-6 col-md-5 col-lg-4 col-xl-4">
+              <mat-form-field appearance="legacy">
+                  <mat-label>Search</mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Dealer.." autocomplete="off" #input>
+                  <mat-icon aria-hidden="false" matSuffix>filter_list</mat-icon>
+              </mat-form-field>
+          </div>
+      </div>
+      <!-- Tabel Data -->
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Kolom Nama User -->
+        <ng-container matColumnDef="requestor">
+          <mat-header-cell *matHeaderCellDef>Nama User</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">{{ pengajuan.requestor }}</mat-cell>
+        </ng-container>
+
+        <!-- Kolom Nama Pengajuan -->
+        <ng-container matColumnDef="jenisPengajuan">
+          <mat-header-cell *matHeaderCellDef>Nama Pengajuan</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">{{ pengajuan.jenisPengajuan }}</mat-cell>
+        </ng-container>
+    
+        <!-- Kolom No Pengajuan -->
+        <ng-container matColumnDef="noPengajuan">
+          <mat-header-cell *matHeaderCellDef>No Pengajuan</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">{{ pengajuan.noPengajuan }}</mat-cell>
+        </ng-container>
+    
+        <!-- Kolom Tanggal Pengajuan -->
+        <ng-container matColumnDef="insertDate">
+          <mat-header-cell *matHeaderCellDef>Tanggal Pengajuan</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">{{ pengajuan.insertDate }}</mat-cell>
+        </ng-container>
+    
+        <!-- Kolom Status Persetujuan -->
+        <ng-container matColumnDef="currentProcess">
+          <mat-header-cell *matHeaderCellDef>Status Persetujuan</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">{{ pengajuan.currentProcess }}</mat-cell>
+        </ng-container>
+    
+        <!-- Kolom Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let pengajuan">
+            <button mat-icon-button color="primary" (click)="showDetails(pengajuan)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+    
+        <!-- Tambahkan baris header tabel -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <!-- Tambahkan baris data -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" [length]="dataSource.data.length" [pageSize]="5"></mat-paginator>
+    </div>
+    
+</div>

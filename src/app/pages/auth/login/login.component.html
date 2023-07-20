@@ -1,0 +1,41 @@
+<app-auth-layout>
+    <h1 class="text-center">Login</h1>
+    <!-- <h5 class="text-center mb-3 mb-md-5">Sign in to manage, track and check your financial</h5> -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input type="text" name="username" matInput formControlName="username" autocomplete="off">
+            <mat-error *ngIf="form.controls.username.hasError('required')">
+                Username is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!form.controls.username.hasError('required') && !form.controls.username.valid">
+                input <strong>invalid</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input [type]="hide ? 'password' : 'text'" name="password" matInput formControlName="password">
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="form.controls.password.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!form.controls.password.hasError('required') && !form.controls.password.valid">
+                input <strong>invalid</strong>
+            </mat-error>
+        </mat-form-field>
+        <div *ngIf="errorMessage != ''" class="text-center err-login">
+            <span>{{errorMessage}}</span>
+        </div>
+        <button mat-raised-button class="btn-submit" type="submit" color="primary">LOGIN</button>
+    </form>
+    <p class="text-center mt-3">Don't have an account yet? <a [routerLink]="['/auth/register']">Sign up for free</a></p>
+    <ngx-spinner 
+    bdColor = "rgba(255,255,255,.7)" 
+    size = "default" 
+    color = "#00a8e8" 
+    type = "ball-newton-cradle" 
+    [fullScreen] = "false">
+    </ngx-spinner>
+</app-auth-layout>

@@ -1,0 +1,42 @@
+h1 {
+    color: #204a7e;
+    margin-bottom: 0;
+}
+
+.size-form {
+    font-size: .8em;
+}
+
+.cst-hint {
+    line-height: 1.4em !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline:hover .mat-form-field-outline {
+    color: #3F51B5;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #204a7e!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #204a7e;
+}
+
+.btn-submit {
+    width: 100%;
+    margin: .6em 0;
+    padding: 0;
+    letter-spacing: .2em;
+    background-color: #2198F3 !important;
+}
+
+a {
+    text-decoration: none;
+}

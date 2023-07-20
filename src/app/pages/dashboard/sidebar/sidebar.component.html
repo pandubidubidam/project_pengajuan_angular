@@ -1,0 +1,94 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="mode" fixedInViewport opened (mouseenter)="!toggleIcon ? sidenav.open() : ''" (mouseleave)="!toggleIcon ? sidenav.close() : ''">
+      <div>
+        <div class="muf-logo">
+          <div (click)="logoClicked()">
+            <img src="../../../../assets/images/iconpengajuan.png" alt="logo-muf">
+          </div>
+        </div>
+        <div class="user">
+          <div class="bg-avatar">
+            <img src="../../../../assets/images/pngwing.png" alt="bg-avatar" width="100%">
+          </div>
+          <div class="avatar">
+            <div class="text-center">
+              <img [src]="avatarSelected?.sourceImg" alt="avatar" width="80%">
+              <mat-icon (click)="editAvatar()">mode_edit_outline</mat-icon>
+            </div>
+            <div>
+              <h4>{{user.name}}</h4>
+              <!-- <p>{{user.email}}</p> -->
+            </div>
+          </div>
+        </div>
+
+
+        <div class="menu-list">
+          <mat-nav-list>
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="menu-tree">
+              <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle (click)="menuClicked(node); activeNode = node;" [ngClass]="{ 'menu-active': activeNode === node }">
+                <mat-list-item>
+                  <mat-icon mat-list-icon class="item-icon" [ngClass]="{ 'icon-menu-active': activeNode === node }">{{node.icon}}</mat-icon>
+                  <h4 mat-line class="hide-on-collapse" [ngClass]="{ 'name-menu-active': activeNode === node }">{{node.menuName}}</h4>
+                </mat-list-item>
+              </mat-tree-node>
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+              <div class="mat-tree-node">
+                <mat-list-item [ngClass]="{ 'menu-active-oncollapse': node.menuCode === prntCode }">
+                  <mat-icon mat-list-icon class="item-icon" [ngClass]="{ 'menu-active-oncollapse': node.menuCode === prntCode }">{{node.icon}}</mat-icon>
+                  <h4 mat-line class="hide-on-collapse">{{node.menuName}}</h4>
+                  <button mat-icon-button matTreeNodeToggle class="hide-on-collapse"
+                      [attr.aria-label]="'Toggle ' + node.menuName">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                  </button>
+                </mat-list-item>
+              </div>
+              <div [class.menu-tree-invisible]="!treeControl.isExpanded(node)" class="hide-on-collapse" role="group">
+                <ng-container matTreeNodeOutlet></ng-container>
+              </div>
+            </mat-nested-tree-node>
+            </mat-tree>
+          </mat-nav-list>
+        </div>
+      </div>
+      
+      <div class="sidenav-toggle">
+          <mat-icon 
+            (click)="toggleIcon=!toggleIcon; toggleIcon ? sidenav.open() : sidenav.close()"
+            [ngClass]="toggleIcon == true ? 'toggle-on' : 'toggle-off'">
+            <span>{{toggleIcon ? 'toggle_on' : 'toggle_off'}}</span>
+          </mat-icon>
+      </div>
+  </mat-sidenav>
+  
+  <mat-sidenav-content [ngClass]="!toggleIcon ? 'margin-behavior' : ''">
+    <div class="main-content">
+        <app-header></app-header>
+        <div class="cvr-iframe">
+          <app-home *ngIf="exactUrl == ''"></app-home>
+          <iframe 
+            *ngIf="exactUrl != ''"
+            [src]="safeSrc" 
+            frameborder="0" 
+            webkitallowfullscreen 
+            mozallowfullscreen
+            allowfullscreen
+            style="width: 100%; height: 100%;">
+          </iframe>
+          <ngx-spinner 
+          bdColor = "rgba(255,255,255,1)" 
+          size = "default" 
+          color = "#00a8e8" 
+          type = "ball-newton-cradle" 
+          [fullScreen] = "false">
+          </ngx-spinner>
+        </div>
+        <div class="footer">
+          <span>Angular ©{{todayDate | date:'yyyy'}}</span>
+          <span>Version {{version}}</span>
+        </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

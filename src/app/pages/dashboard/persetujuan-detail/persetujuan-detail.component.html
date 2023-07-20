@@ -1,0 +1,79 @@
+<div class="header">
+    <!-- Header judul menu -->
+    <h2>Persetujuan > {{ noPengajuan }}</h2>
+  </div>
+  
+  <div class="divider"></div>
+  
+  <div class="content">
+    <!-- Isi konten -->
+    <div class="content">
+      <!-- Tabel Data -->
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Kolom Nomor -->
+        <ng-container matColumnDef="nomor">
+          <mat-header-cell *matHeaderCellDef>Nomor</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{ item.nomor }}</mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Nama Dokumen -->
+        <ng-container matColumnDef="namaDokumen">
+          <mat-header-cell *matHeaderCellDef>Nama Dokumen</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{ item.namaDokumen }}</mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <button mat-icon-button color="primary" (click)="viewDocument(item)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="downloadDocument(item)">
+              <mat-icon>cloud_download</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Checklist -->
+        <ng-container matColumnDef="checklist">
+          <mat-header-cell *matHeaderCellDef>Checklist</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <mat-checkbox [color]="'primary'" [(ngModel)]="item.isChecked">Dokumen ini telah saya baca</mat-checkbox>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Radio Button -->
+        <ng-container matColumnDef="radioButton">
+          <mat-header-cell *matHeaderCellDef>Radio Button</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <mat-radio-group [(ngModel)]="item.radioButtonStatus">
+              <mat-radio-button [color]="'primary'" value="Sesuai">Sesuai</mat-radio-button>
+              <mat-radio-button [color]="'primary'" value="Tidak Sesuai">Tidak Sesuai</mat-radio-button>
+            </mat-radio-group>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Note -->
+        <ng-container matColumnDef="notes">
+          <mat-header-cell *matHeaderCellDef>Note</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="item.notes"></textarea>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Tambahkan baris header tabel -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <!-- Tambahkan baris data -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+    <!-- Tombol-tombol -->
+    <div class="buttons">
+      <button mat-raised-button color="accent" class="button" [disabled]="!isRadioButtonTidakSesuaiSelected()">Revisi</button>
+      <button mat-raised-button color="primary" class="button" [disabled]="!isDokumenBacaCheckedAndRadioButtonSesuai()">Setuju</button>
+    </div>
+</div>

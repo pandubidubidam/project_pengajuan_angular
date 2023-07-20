@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2 class="text-center">Select Your Avatar</h2>
+        </div>
+        <div mat-dialog-content class="col-12 scrollbar">
+            <div class="row">
+                <div *ngFor="let avatar of avatars; let i = index;" 
+                     class="col-6 col-sm-4 col-md-3 col-lg-2 mt-2 mb-2"
+                     [ngClass]="{'avatar-active' : selectedIndex === i}">
+                    <mat-card (click)="indexAvatar(i);">
+                        <div>
+                            <img src="{{avatar.sourceImg}}" alt="{{avatar.imgAlt}}">
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-actions class="col-12 mt-2" style="display: flex; justify-content: end;">
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button mat-raised-button (click)="onOkClick()" color="primary" class="ms-4" cdkFocusInitial>Ok</button>
+        </div>
+    </div>
+</div>

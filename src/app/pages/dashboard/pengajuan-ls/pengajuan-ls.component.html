@@ -1,0 +1,197 @@
+<p>pengajuan-ls works!</p>
+<div class="header">
+    <!-- Header judul menu -->
+    <h2>Pengajuan Baru > Pengajuan LS Barang dan Jasa</h2>
+  </div>
+  
+  <div class="divider"></div>
+  
+  <div class="content">
+    <!-- Isi konten -->
+    <table class="dokumen-table">
+      <thead>
+        <tr>
+          <th class="nama-dokumen">Nama Dokumen</th>
+          <th class="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="nama-dokumen">SPM</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SPM')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSPM.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSPM hidden (change)="uploadDocument($event, 'SPM')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Surat Permintaan Pembayaran</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SPP')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSPP.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSPP hidden (change)="uploadDocument($event, 'SPP')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Rincian SPP</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('RSPP')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputRSPP.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputRSPP hidden (change)="uploadDocument($event, 'RSPP')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Salinan SPD</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SSPD')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSSPD.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSSPD hidden (change)="uploadDocument($event, 'SSPD')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Surat Pernyataan Pertanggungjawaban Mutlak</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SPPM')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSPPM.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSPPM hidden (change)="uploadDocument($event, 'SPPM')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Surat Pernyataan Verifikasi</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SPVER')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSPVER.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSPVER hidden (change)="uploadDocument($event, 'SPVER')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Ringkasan Kontrak atau Dokumen Lain yang Dipersamakan</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('RKBAD')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputRKBAD.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputRKBAD hidden (change)="uploadDocument($event, 'RKBAD')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Salinan / DPA / DPPA Atas Kegiatan Terkait</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SDDAKT')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSDDAKT.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSDDAKT hidden (change)="uploadDocument($event, 'SDDAKT')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">SPP Potongan Pajak KASDA / Cetakan E-Billing</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SPPKCE')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSPPKCE.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSPPKCE hidden (change)="uploadDocument($event, 'SPPKCE')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Salinan Referensi Bank Tahun Berjalan</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SRBTB')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSRBTB.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSRBTB hidden (change)="uploadDocument($event, 'SRBTB')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Salinan NPWP</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('SNPWP')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputSNPWP.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputSNPWP hidden (change)="uploadDocument($event, 'SNPWP')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Berita Acara Serah Terima Barang / Jasa Dari Penyedia</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('BASTB')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputBASTB.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputBASTB hidden (change)="uploadDocument($event, 'BASTB')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Berita Acara Pembayaran</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('BAPEM')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputBAPEM.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputBAPEM hidden (change)="uploadDocument($event, 'BAPEM')">
+          </td>
+        </tr>
+        <tr>
+          <td class="nama-dokumen">Jaminan Uang Muka / Jaminan Pelaksana / Jaminan Pemeliharaan 100%</td>
+          <td class="action">
+            <button class="btn-action" (click)="viewDocument('JUMJM')">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button class="btn-action" (click)="fileInputJUMJM.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInputJUMJM hidden (change)="uploadDocument($event, 'JUMJM')">
+          </td>
+        </tr>
+        <!-- Tambahkan baris lain sesuai kebutuhan -->
+      </tbody>
+    </table>
+
+    <!-- Tombol Ajukan Permohonan -->
+    <div class="ajukan-permohonan">
+      <button class="btn-ajukan-permohonan" (click)="submit()">Ajukan Permohonan</button>
+    </div>
+  
+  </div>
+  

@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <button mat-icon-button *ngIf="!isPhone" matTooltip="show profil" matTooltipClass="profil-tooltip" (click)="openProfil()" disableRipple>
+        <mat-icon>person</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="!isPhone" matTooltip="logout" (click)="logout()" disableRipple>
+        <mat-icon>power_settings_new</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="isPhone" [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openProfil()">
+        <mat-icon>person</mat-icon>
+        <span>Profil</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+    </button>
+    </mat-menu>
+</mat-toolbar>
