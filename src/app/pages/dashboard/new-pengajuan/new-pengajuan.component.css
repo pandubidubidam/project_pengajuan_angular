@@ -1,104 +1,84 @@
 /* Styling for the header */
 .header {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .header h2 {
-    font-size: 24px;
-    color: #000000;
-    margin: 0 100px;
-  }
-  
-  /* Styling for the divider */
-  .divider {
-    border-bottom: 2px solid #000000;
-    margin: 0 100px;
-  }
-  
-  /* Styling for the content */
-  .content {
-    padding: 20px;
-    font-size: 16px;
-    color: #555;
-    margin: 0 100px;
-  }
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
+}
 
-  .button-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Added to allow buttons to wrap to the next line if needed */
-    margin-bottom: 10px;
-  }
+.header h2 {
+  font-size: 24px;
+  color: #000000;
+  margin: 0 100px;
+}
 
-  .button-row button {
-    flex: 1;
-    margin: 5px; /* Adjusted margin to create some spacing between buttons */
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 15px;
-    white-space: normal; /* Added to allow the text to wrap within the button */
-    text-align: center; /* Added to center the text horizontally */
-  }
+/* Styling for the divider */
+.divider {
+  border-bottom: 2px solid #000000;
+  margin: 0 100px;
+}
 
-  /* Button colors */
-  .button-gu {
-    background-color: #F08080;
-    color: black;
-  }
+/* Styling for the content */
+.content {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  margin: 0 100px;
+}
 
-  .button-btt {
-    background-color: #FF4500;
-    color: black;
-  }
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
 
-  .button-add {
-    background-color: #F0E68C;
-    color: black;
-  }
+.button-row button {
+  flex: 1;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  white-space: normal;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .button-bl {
-    background-color: #3CB371;
-    color: black;
-  }
+/* Button colors */
+.button-gu {
+  background-color: #F08080;
+  color: black;
+}
 
-  .button-tu {
-    background-color: #5F9EA0;
-    color: black;
-  }
+.button-btt {
+  background-color: #FF4500;
+  color: black;
+}
 
-  .button-ls {
-    background-color: #B0E0E6;
-    color: black;
-  }
-  
-  /* Responsive layout */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      text-align: center;
-    }
+.button-add {
+  background-color: #F0E68C;
+  color: black;
+}
 
-    .content {
-        margin: 0;
-      }
-    
-      .button-row {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap; /* Added to allow buttons to wrap to the next line if needed */
-        margin-bottom: 10px;
-      }
-    
-      .button-row button {
-        flex: 1;
-        margin: 5px; /* Adjusted margin to create some spacing between buttons */
-        font-size: 14px;
-        padding: 10px 15px;
-        white-space: normal; /* Added to allow the text to wrap within the button */
-        text-align: center; /* Added to center the text horizontally */
-      }
-      
-    }
+.button-bl {
+  background-color: #3CB371;
+  color: black;
+}
+
+.button-tu {
+  background-color: #5F9EA0;
+  color: black;
+}
+
+.button-ls {
+  background-color: #B0E0E6;
+  color: black;
+}
+
+/* Button icons */
+.button-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}

@@ -120,7 +120,7 @@ export class SidebarComponent implements OnInit {
     if (this.role === "Requestor") {
       // Menyembunyikan child menu "Persetujuan"
       this.menu[0].children = this.menu[0].children?.filter(child => child.menuName !== "Persetujuan");
-    } else if (this.role.includes("Approval")) {
+    } else if (this.role.includes("Approver")) {
       // Menyembunyikan child menu "Pengajuan Baru" dan "Lacak Pengajuan"
       this.menu[0].children = this.menu[0].children?.filter(child => child.menuName !== "Pengajuan Baru" && child.menuName !== "Lacak Pengajuan");
     } else {
