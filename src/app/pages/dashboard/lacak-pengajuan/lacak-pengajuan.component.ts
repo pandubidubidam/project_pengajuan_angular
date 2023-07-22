@@ -12,6 +12,7 @@ export interface Pengajuan {
   noPengajuan: string;
   insertDate: string;
   currentProcess: string;
+  status:string;
 }
 
 @Component({
@@ -64,33 +65,18 @@ export class LacakPengajuanComponent implements OnInit {
           pengajuan.jenisPengajuan = 'Pengajuan Barang dan Jasa';
         } 
 
-        switch (pengajuan.currentProcess) {
+        switch (pengajuan.status) {
           case '0':
-            pengajuan.currentProcess = 'Request';
+            pengajuan.status = 'Request';
             break;
           case '1':
-            pengajuan.currentProcess = 'Approve Level 1';
+            pengajuan.status = 'Proses Approval';
             break;
           case '2':
-            pengajuan.currentProcess = 'Approve Level 2';
-            break;
-          case '3':
-            pengajuan.currentProcess = 'Approve Level 3';
-            break;
-          case '4':
-            pengajuan.currentProcess = 'Approve Level 4';
-            break;
-          case '5':
-            pengajuan.currentProcess = 'Approve Level 5';
-            break;
-          case '6':
-            pengajuan.currentProcess = 'Approve Level 6';
-            break;
-          case '7':
-            pengajuan.currentProcess = 'Approve Level 7';
+            pengajuan.status = 'Revisi';
             break;
           default:
-            pengajuan.currentProcess = 'Unknown';
+            pengajuan.currentProcess = 'Approved';
             break;
         }
         // Ambil tanggal saja dari kolom insertDate
@@ -105,7 +91,12 @@ export class LacakPengajuanComponent implements OnInit {
   }
 
   showDetails(pengajuan: Pengajuan) {
-    this.router.navigate(['/lacak/detail', pengajuan.noPengajuan], { relativeTo: this.route });
+    // console.log(pengajuan)
+    if (pengajuan.status === 'Revisi'){
+      this.router.navigate(['/revisi/detail', pengajuan.noPengajuan], { relativeTo: this.route });
+    } else {
+      this.router.navigate(['/lacak/detail', pengajuan.noPengajuan], { relativeTo: this.route });
+    }
   }
 
   applyFilter(event: Event) {

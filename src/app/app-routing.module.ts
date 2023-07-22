@@ -13,6 +13,7 @@ import { PersetujuanComponent } from './pages/dashboard/persetujuan/persetujuan.
 import { PersetujuanDetailComponent } from './pages/dashboard/persetujuan-detail/persetujuan-detail.component';
 import { LacakPengajuanComponent } from './pages/dashboard/lacak-pengajuan/lacak-pengajuan.component';
 import { LacakPengajuanDetailComponent } from './pages/dashboard/lacak-pengajuan-detail/lacak-pengajuan-detail.component';
+import { RevisiComponent } from './pages/dashboard/revisi/revisi.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   { 
     path: 'persetujuan/detail/:noPengajuan', component: PersetujuanDetailComponent 
+  },
+  { 
+    path: 'revisi/detail/:noPengajuan', component: RevisiComponent 
   },
   { 
     path: 'pengajuan/gu', component: PengajuanGuComponent 

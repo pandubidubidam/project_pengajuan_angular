@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MainServiceService } from 'src/app/services/main-service.service';
+import { HttpStatusCode } from '@angular/common/http';
+import { GlobalHelper } from 'src/app/helpers/global-helper';
+import { credential } from 'src/app/lib/security';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 export interface Dokumen {
   radioButton: boolean;
@@ -22,6 +27,7 @@ export interface Dokumen {
 export class PersetujuanDetailComponent implements OnInit {
 
   noPengajuan: string | null = null;
+  jenisPengajuan: string | null = null;
   dataSource!: MatTableDataSource<Dokumen>;
   displayedColumns: string[] = ['nomor', 'namaDokumen', 'action', 'checklist', 'radioButton', 'notes'];
   parameter = {
@@ -29,6 +35,8 @@ export class PersetujuanDetailComponent implements OnInit {
     "docCode": "",
     "noPengajuan": ""
   }
+  user: any;
+  approvalDocument: any[] = [];
 
   // Properti tambahan untuk menyimpan status checkbox dan radio button
   allDokumenBacaChecked: boolean = false;
@@ -40,11 +48,18 @@ export class PersetujuanDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public services: MainServiceService
-  ) { }
+    public services: MainServiceService,
+    private globalHelper: GlobalHelper,
+    private router: Router
+  ) {this.user = JSON.parse(credential.storage.get('user'));}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Dokumen>([]);
+    const navigation = window.history.state;
+    if (navigation && navigation.jenisPengajuan) {
+      this.jenisPengajuan = navigation.jenisPengajuan;
+    }
+    console.log('jenisPengajuan >>>>', this.jenisPengajuan);
 
     this.route.paramMap.subscribe(params => {
       const noPengajuan = params.get('noPengajuan');
@@ -237,6 +252,103 @@ export class PersetujuanDetailComponent implements OnInit {
 
   // Fungsi untuk mengecek apakah ada radio button "Tidak Sesuai" yang dipilih
   isRadioButtonTidakSesuaiSelected(): boolean {
-    return this.dataSource.data.some(dokumen => dokumen.radioButtonStatus === 'Tidak Sesuai');
+    const ceklis = this.dataSource.data.every(dokumen => dokumen.isChecked);
+    const harusdipilih = this.dataSource.data.every(dokumen => dokumen.radioButtonStatus)
+    const adatidaksesuai = this.dataSource.data.some(dokumen => dokumen.radioButtonStatus === 'Tidak Sesuai');
+    return ceklis && harusdipilih && adatidaksesuai
+  }
+
+  revisi(dataSource: Dokumen[]){
+    console.log(dataSource);
+    this.approvalDocument = dataSource.map(item => {
+      return {
+        docId: item.docId,
+        docCode: item.docCode,
+        notes: item.notes,
+        status: item.radioButtonStatus === 'Sesuai' ? true : false
+      };
+    });
+    console.log(this.approvalDocument);
+    this.services.approval.noPengajuan = this.noPengajuan!;
+    this.services.approval.notes = 'Revisi';
+    this.services.approval.insertBy = this.user?.userId ? this.user.userId : '';
+    this.services.approval.updateBy = this.user?.userId ? this.user.userId : '';
+    this.services.approval.level = this.user?.level ? this.user.level : '';
+    this.services.approval.approvalStatus = false;
+    this.services.approval.document = [...this.approvalDocument];
+    console.log('parameter >',this.services.approval);
+    this.services.postDocument('pengajuan/approval', this.services.approval).subscribe(result => {
+      console.log("Hasil approval =========> ", result.body.data);
+      if (result.status == HttpStatusCode.Ok) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Approval untuk melakukan Revisi Berhasil',
+          showCancelButton: false,
+          confirmButtonText: 'Ok',
+          showCloseButton: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/external/590020000']);
+            } 
+        })
+      } else if (result.status == HttpStatusCode.GatewayTimeout) {
+        Swal.fire({
+          icon: 'error',
+          text: `Approval Gagal, Connection problem, try again`
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          text: `Approval Gagal, Connection problem, try again`
+        });
+      }
+    });
+  }
+
+  setuju(dataSource: Dokumen[]): void {
+    console.log(dataSource);
+    this.approvalDocument = dataSource.map(item => {
+      return {
+        docId: item.docId,
+        docCode: item.docCode,
+        notes: item.notes,
+        status: item.radioButtonStatus === 'Sesuai' ? true : false
+      };
+    });
+    console.log(this.approvalDocument);
+    this.services.approval.noPengajuan = this.noPengajuan!;
+    this.services.approval.notes = 'Approve';
+    this.services.approval.insertBy = this.user?.userId ? this.user.userId : '';
+    this.services.approval.updateBy = this.user?.userId ? this.user.userId : '';
+    this.services.approval.level = this.user?.level ? this.user.level : '';
+    this.services.approval.approvalStatus = true;
+    this.services.approval.document = [...this.approvalDocument];
+    console.log('parameter >',this.services.approval);
+    this.services.postDocument('pengajuan/approval', this.services.approval).subscribe(result => {
+      console.log("Hasil approval =========> ", result.body.data);
+      if (result.status == HttpStatusCode.Ok) {
+        Swal.fire({
+          icon: 'success',
+          text: result.body.msg_desc,
+          showCancelButton: false,
+          confirmButtonText: 'Ok',
+          showCloseButton: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/external/590020000']);
+            } 
+        })
+      } else if (result.status == HttpStatusCode.GatewayTimeout) {
+        Swal.fire({
+          icon: 'error',
+          text: `Approval Gagal, Connection problem, try again`
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          text: `Approval Gagal, Connection problem, try again`
+        });
+      }
+    });
   }
 }

@@ -39,6 +39,7 @@ import { PersetujuanDetailComponent } from './persetujuan-detail/persetujuan-det
 import { LacakPengajuanComponent } from './lacak-pengajuan/lacak-pengajuan.component';
 import { LacakPengajuanDetailComponent } from './lacak-pengajuan-detail/lacak-pengajuan-detail.component';
 import { LoaderInterceptor } from 'src/app/interceptor/loader.interceptor';
+import { RevisiComponent } from './revisi/revisi.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { LoaderInterceptor } from 'src/app/interceptor/loader.interceptor';
     PersetujuanComponent,
     PersetujuanDetailComponent,
     LacakPengajuanComponent,
-    LacakPengajuanDetailComponent
+    LacakPengajuanDetailComponent,
+    RevisiComponent
   ],
   imports: [
     CommonModule,

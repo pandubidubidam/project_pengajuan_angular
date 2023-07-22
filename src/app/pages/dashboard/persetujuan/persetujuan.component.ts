@@ -105,7 +105,10 @@ export class PersetujuanComponent implements OnInit {
   }
 
   showDetails(pengajuan: Pengajuan) {
-    this.router.navigate(['/persetujuan/detail', pengajuan.noPengajuan], { relativeTo: this.route });
+    this.router.navigate(['/persetujuan/detail', pengajuan.noPengajuan], {
+      relativeTo: this.route,
+      state: { jenisPengajuan: pengajuan.jenisPengajuan }
+    });
   }
 
   applyFilter(event: Event) {

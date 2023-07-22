@@ -1,0 +1,110 @@
+.container {
+    margin: 0 100px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .header h2 {
+    font-size: 24px;
+    color: #000000;
+    margin: 0 100px;
+  }
+  
+  .divider {
+    border-bottom: 2px solid #000000;
+    margin: 0 100px;
+  }
+  
+  .content {
+    padding: 20px;
+    font-size: 16px;
+    color: #555;
+    margin: 0 30px;
+  }
+  
+  /* custom table */
+  .mat-table {
+    table-layout: auto;
+  }
+
+  .mat-column-namaDokumen {
+    flex: 2; /* Atur lebar kolom sesuai kebutuhan, misalnya flex: 2; */
+  }
+
+  .mat-cell.mat-column-nomor {
+    flex: 0.5;
+  }
+
+  .mat-header-cell.mat-column-nomor {
+    flex: 0.5;
+  }
+
+  .mat-cell.mat-column-action {
+    flex: 0.6;
+  }
+
+  .mat-header-cell.mat-column-action {
+    flex: 0.6;
+  }
+
+  .mat-cell.mat-column-checklist {
+    flex:1.5;
+    word-wrap: break-word;
+    line-height: 1.2;
+  }
+
+  .mat-header-cell.mat-column-checklist {
+    flex:1.5;
+  }
+
+  .mat-cell.mat-column-note {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  .mat-cell.mat-column-note textarea {
+    width: 90%;
+    height: 100%;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+
+  .table-wrapper {
+    position: relative;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 50px;
+    size: 100px;
+  }
+  
+  .button {
+    margin-left: 10px;
+    font-size: 18px;
+    padding: 4px 30px;
+  }
+
+  .ajukan-permohonan {
+    margin-top: auto; /* Menempatkan elemen ke bawah */
+    display: flex;
+    justify-content: flex-end; /* Menempatkan elemen ke kanan */
+    padding: 16px; /* Atur padding sesuai kebutuhan */
+  }
+  
+  .btn-ajukan-permohonan {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }

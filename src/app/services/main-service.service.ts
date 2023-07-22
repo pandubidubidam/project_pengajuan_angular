@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { docIdElement } from '../models/ajukan.model';
 import { TodolistApprovalElement } from '../models/todolistApproval.model';
+import { approvalElement } from '../models/approval.model';
 import { environment } from 'src/environments/environment';
 
 const httpOptions : Object = {
@@ -227,12 +228,41 @@ export class MainServiceService {
     updateBy: ""
   }
 
+  uploadDocumentRevisi = {
+    docId: "",
+    docCode: "",
+    docValue: this.imageDocumentEdit,
+    filename: "",
+    extension: "",
+    insertBy: "",
+    updateBy: ""
+  }
+
   docId: docIdElement[] = [];
   ajukan = {
     jenisPengajuan : "",
     notes : "",
     insertBy : "",
     document : this.docId
+  }
+  revisi = {
+    jenisPengajuan : "",
+    noPengajuan : "",
+    notes : "",
+    insertBy : "",
+    document : this.docId
+  }
+
+  approvalstatus: any = ''
+  document: approvalElement[] = [];
+  approval = {
+    noPengajuan : "",
+    notes : "",
+    insertBy : "",
+    updateBy : "",
+    level : "",
+    approvalStatus : this.approvalstatus,
+    document : this.document
   }
 
   todolistApproval: TodolistApprovalElement[] = [];

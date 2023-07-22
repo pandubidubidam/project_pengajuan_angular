@@ -1,65 +1,82 @@
 <div class="header">
-    <!-- Header judul menu -->
-    <h2>Lacak Pengajuan > {{ noPengajuan }}</h2>
-  </div>
-  
-  <div class="divider"></div>
+  <!-- Header judul menu -->
+  <h2>Lacak Pengajuan > {{ noPengajuan }}</h2>
+</div>
 
-  <div class="content">
-    <mat-vertical-stepper [linear]="true" [selectedIndex]="0">
-        <mat-step label="Pengajuan Baru" state="phone" [completed]="orderStatus !== 'new'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'new'">done</mat-icon>
-          </ng-template>
-          <p>Dilakukan Oleh Pemohon</p>
-        </mat-step>
-        <mat-step label="Approval 1" state="chat" [completed]="orderStatus !== 'appr1'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr1'">done</mat-icon>
-          </ng-template>
-          <p>Approval Oleh Verifikator Berkas</p>
-        </mat-step>
-        <mat-step label="Approval 2" state="chat" [completed]="orderStatus !== 'appr2'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr2'">done</mat-icon>
-          </ng-template>
-          <p>Approval Oleh Roating</p>
-        </mat-step>
-        <mat-step label="Approval 3" state="chat" [completed]="orderStatus !== 'appr3'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr3'">done</mat-icon>
-          </ng-template>
-          <p>Approval Oleh Verifikator Pajak</p>
-        </mat-step>
-        <mat-step label="Approval 4" state="chat" [completed]="orderStatus !== 'appr4'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr4'">done</mat-icon>
-          </ng-template>
-            <p>Approval Oleh Kasubid KASDA</p>
-        </mat-step>
-        <mat-step label="Approval 5" state="chat" [completed]="orderStatus !== 'appr5'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr5'">done</mat-icon>
-          </ng-template>
-            <p>Approval Oleh Analis Keuangan</p>
-        </mat-step>
-        <mat-step label="Approval 6" state="chat" [completed]="orderStatus !== 'appr6'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr6'">done</mat-icon>
-          </ng-template>
-            <p>Approval Oleh Kasubid PUBD</p>
-        </mat-step>
-        <mat-step label="Approval 7" state="chat" [completed]="orderStatus !== 'appr7'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'appr7'">done</mat-icon>
-          </ng-template>
-            <p>Approval Oleh KABID</p>
-        </mat-step>
-        <mat-step label="Approved" state="chat" [completed]="orderStatus !== 'approved'">
-          <ng-template matStepIcon>
-            <mat-icon *ngIf="orderStatus !== 'approved'">done</mat-icon>
-          </ng-template>
-            <p>Pengajuan Diterima</p>
-        </mat-step>
-    </mat-vertical-stepper>
-  </div>
+<div class="divider"></div>
+
+<div class="content">
+  <mat-vertical-stepper [linear]="true" [selectedIndex]="getStepIndex(orderStatus)">
+    <!-- Langkah 1: Pengajuan Baru -->
+    <mat-step label="Pengajuan Baru" state="phone" [completed]="orderStatus !== '0'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '0'">done</mat-icon>
+      </ng-template>
+      <p>Dilakukan Oleh Pemohon</p>
+    </mat-step>
+
+    <!-- Langkah 2: Approval 1 -->
+    <mat-step label="Approval 1" state="chat" [completed]="orderStatus !== '1'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '1'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Verifikator Berkas</p>
+    </mat-step>
+
+    <!-- Langkah 3: Approval 2 -->
+    <mat-step label="Approval 2" state="chat" [completed]="orderStatus !== '2'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '2'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Roating</p>
+    </mat-step>
+
+    <!-- Langkah 4: Approval 3 -->
+    <mat-step label="Approval 3" state="chat" [completed]="orderStatus !== '3'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '3'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Verifikator Pajak</p>
+    </mat-step>
+
+    <!-- Langkah 5: Approval 4 -->
+    <mat-step label="Approval 4" state="chat" [completed]="orderStatus !== '4'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '4'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Kasubid KASDA</p>
+    </mat-step>
+
+    <!-- Langkah 6: Approval 5 -->
+    <mat-step label="Approval 5" state="chat" [completed]="orderStatus !== '5'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '5'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Analis Keuangan</p>
+    </mat-step>
+
+    <!-- Langkah 7: Approval 6 -->
+    <mat-step label="Approval 6" state="chat" [completed]="orderStatus !== '6'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '6'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh Kasubid PUBD</p>
+    </mat-step>
+
+    <!-- Langkah 8: Approval 7 -->
+    <mat-step label="Approval 7" state="chat" [completed]="orderStatus !== '7'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '7'">done</mat-icon>
+      </ng-template>
+      <p>Approval Oleh KABID</p>
+    </mat-step>
+
+    <!-- Langkah 9: Approved -->
+    <mat-step label="Approved" state="chat" [completed]="orderStatus !== '8'">
+      <ng-template matStepIcon>
+        <mat-icon *ngIf="orderStatus !== '8'">done</mat-icon>
+      </ng-template>
+      <p>Pengajuan Diterima</p>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

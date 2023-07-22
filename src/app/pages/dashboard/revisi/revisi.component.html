@@ -1,0 +1,54 @@
+<div class="header">
+    <!-- Header judul menu -->
+    <h2>Revisi > {{ noPengajuan }}</h2>
+  </div>
+  
+  <div class="divider"></div>
+  
+  <div class="content">
+    <!-- Isi konten -->
+    <div class="content">
+      <!-- Tabel Data -->
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Kolom Nama Dokumen -->
+        <ng-container matColumnDef="namaDokumen">
+          <mat-header-cell *matHeaderCellDef>Nama Dokumen</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{ item.namaDokumen }}</mat-cell>
+        </ng-container>
+  
+        <!-- Kolom Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <button mat-icon-button color="primary" (click)="viewDocument(item)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" [disabled]="item.status === true" (click)="fileInput.click()">
+              <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" #fileInput hidden [disabled]="item.status === true" (change)="uploadDocument($event, item)">
+          </mat-cell>
+        </ng-container>
+
+        <!-- Kolom Note -->
+        <ng-container matColumnDef="notes">
+          <mat-header-cell *matHeaderCellDef>Note</mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="item.notes" disabled></textarea>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Tambahkan baris header tabel -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <!-- Tambahkan baris data -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+    <!-- Tombol Ajukan Permohonan -->
+    <div class="ajukan-permohonan">
+      <button class="btn-ajukan-permohonan" (click)="submit()">Ajukan Permohonan Revisi</button>
+    </div>
+</div>

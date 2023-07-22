@@ -73,7 +73,7 @@
 
     <!-- Tombol-tombol -->
     <div class="buttons">
-      <button mat-raised-button color="accent" class="button" [disabled]="!isRadioButtonTidakSesuaiSelected()">Revisi</button>
-      <button mat-raised-button color="primary" class="button" [disabled]="!isDokumenBacaCheckedAndRadioButtonSesuai()">Setuju</button>
+      <button mat-raised-button color="accent" class="button" [disabled]="!isRadioButtonTidakSesuaiSelected()" (click)="revisi(dataSource.data)">Revisi</button>
+      <button mat-raised-button color="primary" class="button" [disabled]="!isDokumenBacaCheckedAndRadioButtonSesuai()" (click)="setuju(dataSource.data)">Setuju</button>
     </div>
 </div>
