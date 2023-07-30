@@ -5,6 +5,7 @@ import { credential } from 'src/app/lib/security';
 import { DocumentElement } from 'src/app/models/document';
 import { MainServiceService } from 'src/app/services/main-service.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +22,8 @@ export class PengajuanLsComponent implements OnInit {
   constructor(
     public services: MainServiceService,
     private globalHelper: GlobalHelper,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {
     this.user = JSON.parse(credential.storage.get('user'));
   }
@@ -109,9 +111,11 @@ export class PengajuanLsComponent implements OnInit {
           } else if (documentName === 'JUMJM') {
             uploadDocument.docCode = '23';
           }
+          this.spinner.show();
           this.services.postDocument('pengajuan/uploadDocument', uploadDocument).subscribe(result => {
             console.log("Hasil Upload =========> ", result.body.data);
             if (result.status == HttpStatusCode.Ok) {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'success',
                 text: result.body.msg_desc
@@ -119,11 +123,13 @@ export class PengajuanLsComponent implements OnInit {
               this.services[`uploadDocumentEdit${documentName}` as keyof MainServiceService] = result.body.data;
               console.log(`set Hasil Upload =========> `, this.services[`uploadDocumentEdit${documentName}` as keyof MainServiceService]);
             } else if (result.status == HttpStatusCode.GatewayTimeout) {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'error',
                 text: `Gagal upload dokumen, silahkan upload kembali`
               });
             } else {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'error',
                 text: `Gagal upload dokumen, silahkan upload kembali`
@@ -131,6 +137,7 @@ export class PengajuanLsComponent implements OnInit {
             }
           });
         } else {
+          this.spinner.hide();
           Swal.fire({
             icon: 'error',
             title: 'Gagal',

@@ -5,7 +5,9 @@ import { credential } from 'src/app/lib/security';
 import { DocumentElement } from 'src/app/models/document';
 import { MainServiceService } from 'src/app/services/main-service.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-pengajuan-gu',
@@ -21,7 +23,8 @@ export class PengajuanGuComponent implements OnInit {
   constructor(
     public services: MainServiceService,
     private globalHelper: GlobalHelper,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {
     this.user = JSON.parse(credential.storage.get('user'));
     console.log('get user ===========>', this.user);
@@ -99,9 +102,11 @@ export class PengajuanGuComponent implements OnInit {
             uploadDocument.docCode = '8';
           }
           console.log("Parameter Upload =========> ", uploadDocument);
+          this.spinner.show();
           this.services.postDocument('pengajuan/uploadDocument', uploadDocument).subscribe(result => {
             console.log("Hasil Upload =========> ", result.body.data);
             if (result.status == HttpStatusCode.Ok) {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'success',
                 text: result.body.msg_desc
@@ -109,11 +114,13 @@ export class PengajuanGuComponent implements OnInit {
               this.services[`uploadDocumentEdit${documentName}` as keyof MainServiceService] = result.body.data;
               console.log(`set Hasil Upload =========> `, this.services[`uploadDocumentEdit${documentName}` as keyof MainServiceService]);
             } else if (result.status == HttpStatusCode.GatewayTimeout) {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'error',
                 text: `Gagal upload dokumen, silahkan upload kembali`
               });
             } else {
+              this.spinner.hide();
               Swal.fire({
                 icon: 'error',
                 text: `Gagal upload dokumen, silahkan upload kembali`
@@ -121,6 +128,7 @@ export class PengajuanGuComponent implements OnInit {
             }
           });
         } else {
+          this.spinner.hide();
           Swal.fire({
             icon: 'error',
             title: 'Gagal',

@@ -39,7 +39,7 @@
   .action {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     border-left: 2px solid #ccc; /* Garis pemisah di sisi kiri kolom Action */
     padding-left: 8px; /* Jarak antara garis pemisah dan tombol-tombol */
@@ -87,6 +87,10 @@
     cursor: pointer;
     font-size: 16px;
   }
+
+  .file-name {
+    font-size: 9px;
+  }
   
   /* Responsive layout */
   @media (max-width: 768px) {
@@ -126,6 +130,10 @@
     .btn-action:not(:last-child) {
       margin-right: 0;
       margin-bottom: 5px;
+    }
+
+    .file-name {
+      font-size: 9px;
     }
   }
   

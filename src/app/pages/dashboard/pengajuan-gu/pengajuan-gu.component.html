@@ -1,124 +1,135 @@
 <div class="header">
-    <!-- Header judul menu -->
-    <h2>Pengajuan Baru > Pengajuan Ganti Uang</h2>
-  </div>
-  
-  <div class="divider"></div>
-  
-  <div class="content">
-    <!-- Isi konten -->
-    <table class="dokumen-table">
-      <thead>
-        <tr>
-          <th class="nama-dokumen">Nama Dokumen</th>
-          <th class="action">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="nama-dokumen">SPM</td>
-          <td class="action">
-            <button class="btn-action" (click)="viewDocument('SPM')">
-              <mat-icon>visibility</mat-icon>
-            </button>
-            <button class="btn-action" (click)="fileInputSPM.click()">
-              <mat-icon>upload</mat-icon>
-            </button>
-            <input type="file" #fileInputSPM hidden (change)="uploadDocument($event, 'SPM')">
-          </td>
-        </tr>
-        <tr>
-          <td class="nama-dokumen">Surat Permintaan Pembayaran</td>
-          <td class="action">
-            <button class="btn-action" (click)="viewDocument('SPP')">
-              <mat-icon>visibility</mat-icon>
-            </button>
-            <button class="btn-action" (click)="fileInputSPP.click()">
-              <mat-icon>upload</mat-icon>
-            </button>
-            <input type="file" #fileInputSPP hidden (change)="uploadDocument($event, 'SPP')">
-          </td>
-        </tr>
-        <tr>
-            <td class="nama-dokumen">Rincian SPP</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('RSPP')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputRSPP.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputRSPP hidden (change)="uploadDocument($event, 'RSPP')">
-            </td>
-        </tr>
-        <tr>
-            <td class="nama-dokumen">Surat Pernyataan Pertanggungjawaban Mutlak</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('SPPM')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputSPPM.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputSPPM hidden (change)="uploadDocument($event, 'SPPM')">
-            </td>
-          </tr>
-          <tr>
-            <td class="nama-dokumen">Surat Pernyataan Verifikasi Oleh PPK SKPD/ PPK Unit SKPD</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('SPVOP')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputSPVOP.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputSPVOP hidden (change)="uploadDocument($event, 'SPVOP')">
-            </td>
-          </tr>
-          <tr>
-            <td class="nama-dokumen">Salinan SPD</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('SSPD')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputSSPD.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputSSPD hidden (change)="uploadDocument($event, 'SSPD')">
-            </td>
-          </tr>
-          <tr>
-            <td class="nama-dokumen">Salinan / DPA / DPPA Atas Kegiatan Terkait</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('SDDAKT')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputSDDAKT.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputSDDAKT hidden (change)="uploadDocument($event, 'SDDAKT')">
-            </td>
-          </tr>
-          <tr>
-            <td class="nama-dokumen">Laporan Pertanggungjawaban (LPJ) UP</td>
-            <td class="action">
-              <button class="btn-action" (click)="viewDocument('LPJUP')">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button class="btn-action" (click)="fileInputLPJUP.click()">
-                <mat-icon>upload</mat-icon>
-              </button>
-              <input type="file" #fileInputLPJUP hidden (change)="uploadDocument($event, 'LPJUP')">
-            </td>
-          </tr>
-        <!-- Tambahkan baris lain sesuai kebutuhan -->
-      </tbody>
-    </table>
+  <!-- Header judul menu -->
+  <h2>Pengajuan Baru > Pengajuan Ganti Uang</h2>
+</div>
 
-    <!-- Tombol Ajukan Permohonan -->
+<div class="divider"></div>
+
+<div class="content">
+  <!-- Isi konten -->
+  <table class="dokumen-table">
+    <thead>
+      <tr>
+        <th class="nama-dokumen">Nama Dokumen</th>
+        <th class="action">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nama-dokumen">SPM</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SPM')" [disabled]="!services.uploadDocumentEditSPM.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSPM.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSPM hidden (change)="uploadDocument($event, 'SPM')">
+          <span *ngIf="services.uploadDocumentEditSPM.filename" class="file-name">{{ services.uploadDocumentEditSPM.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Surat Permintaan Pembayaran</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SPP')" [disabled]="!services.uploadDocumentEditSPP.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSPP.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSPP hidden (change)="uploadDocument($event, 'SPP')">
+          <span *ngIf="services.uploadDocumentEditSPP.filename" class="file-name">{{ services.uploadDocumentEditSPP.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Rincian SPP</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('RSPP')" [disabled]="!services.uploadDocumentEditRSPP.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputRSPP.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputRSPP hidden (change)="uploadDocument($event, 'RSPP')">
+          <span *ngIf="services.uploadDocumentEditRSPP.filename" class="file-name">{{ services.uploadDocumentEditRSPP.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Surat Pernyataan Pertanggungjawaban Mutlak</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SPPM')" [disabled]="!services.uploadDocumentEditSPPM.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSPPM.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSPPM hidden (change)="uploadDocument($event, 'SPPM')">
+          <span *ngIf="services.uploadDocumentEditSPPM.filename" class="file-name">{{ services.uploadDocumentEditSPPM.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Surat Pernyataan Verifikasi Oleh PPK SKPD/ PPK Unit SKPD</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SPVOP')" [disabled]="!services.uploadDocumentEditSPVOP.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSPVOP.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSPVOP hidden (change)="uploadDocument($event, 'SPVOP')">
+          <span *ngIf="services.uploadDocumentEditSPVOP.filename" class="file-name">{{ services.uploadDocumentEditSPVOP.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Salinan SPD</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SSPD')" [disabled]="!services.uploadDocumentEditSSPD.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSSPD.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSSPD hidden (change)="uploadDocument($event, 'SSPD')">
+          <span *ngIf="services.uploadDocumentEditSSPD.filename" class="file-name">{{ services.uploadDocumentEditSSPD.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Salinan / DPA / DPPA Atas Kegiatan Terkait</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('SDDAKT')" [disabled]="!services.uploadDocumentEditSDDAKT.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputSDDAKT.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputSDDAKT hidden (change)="uploadDocument($event, 'SDDAKT')">
+          <span *ngIf="services.uploadDocumentEditSDDAKT.filename" class="file-name">{{ services.uploadDocumentEditSDDAKT.filename }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nama-dokumen">Laporan Pertanggungjawaban (LPJ) UP</td>
+        <td class="action">
+          <button class="btn-action" (click)="viewDocument('LPJUP')" [disabled]="!services.uploadDocumentEditLPJUP.docId">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button class="btn-action" (click)="fileInputLPJUP.click()">
+            <mat-icon>upload</mat-icon>
+          </button>
+          <input type="file" #fileInputLPJUP hidden (change)="uploadDocument($event, 'LPJUP')">
+          <span *ngIf="services.uploadDocumentEditLPJUP.filename" class="file-name">{{ services.uploadDocumentEditLPJUP.filename }}</span>
+        </td>
+      </tr>
+      <!-- Tambahkan baris lain sesuai kebutuhan -->
+    </tbody>
+  </table>
+
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-spin-clockwise">
+    <p style="color: white">Uploading...</p>
+  </ngx-spinner>
+
+  <!-- Tombol Ajukan Permohonan -->
   <div class="ajukan-permohonan">
     <button class="btn-ajukan-permohonan" (click)="submit()">Ajukan Permohonan</button>
   </div>
-  
-  </div>
-  
+
+</div>

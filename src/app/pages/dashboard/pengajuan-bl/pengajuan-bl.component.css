@@ -1,131 +1,138 @@
 /* Styling untuk tombol Action */
 .btn-action {
-    padding: 4px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    display: flex; /* Gunakan flexbox */
-    align-items: center; /* Penyejajaran vertikal tombol-tombol */
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex; /* Gunakan flexbox */
+  align-items: center; /* Penyejajaran vertikal tombol-tombol */
+}
+
+.btn-action:not(:last-child) {
+  margin-right: 5px; /* Jarak antara tombol-tombol */
+}
+
+/* Styling untuk tabel */
+.dokumen-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.dokumen-table th,
+.dokumen-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.dokumen-table th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+/* Styling untuk kolom nama dokumen */
+.nama-dokumen {
+  flex: 2;
+}
+
+/* Styling untuk kolom Action */
+.action {
+  flex: 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-left: 2px solid #ccc; /* Garis pemisah di sisi kiri kolom Action */
+  padding-left: 8px; /* Jarak antara garis pemisah dan tombol-tombol */
+}
+
+/* Styling untuk header dan divider */
+.header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
+}
+
+.header h2 {
+  font-size: 24px;
+  color: #000000;
+  margin: 0 100px;
+}
+
+.divider {
+  border-bottom: 2px solid #000000;
+  margin: 0 100px;
+}
+
+/* Styling untuk isi konten */
+.content {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  margin: 0 100px;
+}
+
+.ajukan-permohonan {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-ajukan-permohonan {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.file-name {
+  font-size: 9px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .btn-action:not(:last-child) {
-    margin-right: 5px; /* Jarak antara tombol-tombol */
+
+  /* Sesuaikan margin pada header */
+  .header h2 {
+    margin: 10px 0;
   }
-  
-  /* Styling untuk tabel */
-  .dokumen-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+
+  /* Sesuaikan margin pada divider */
+  .divider {
+    margin: 10px 0;
   }
-  
-  .dokumen-table th,
-  .dokumen-table td {
-    padding: 8px;
-    border: 1px solid #ccc;
+
+  /* Sesuaikan margin pada isi konten */
+  .content {
+    margin: 0;
   }
-  
-  .dokumen-table th {
-    text-align: left;
-    background-color: #f2f2f2;
-  }
-  
-  /* Styling untuk kolom nama dokumen */
-  .nama-dokumen {
-    flex: 2;
-  }
-  
-  /* Styling untuk kolom Action */
+
+  /* Atur ulang lebar kolom nama dokumen dan action */
+  .nama-dokumen,
   .action {
     flex: 1;
-    display: flex;
-    justify-content: center;
+  }
+
+  /* Atur ulang tata letak tombol action */
+  .action {
+    flex-direction: column;
     align-items: center;
-    border-left: 2px solid #ccc; /* Garis pemisah di sisi kiri kolom Action */
-    padding-left: 8px; /* Jarak antara garis pemisah dan tombol-tombol */
   }
-  
-  /* Styling untuk header dan divider */
-  .header {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 20px;
+
+  /* Atur ulang jarak antara tombol action */
+  .btn-action:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 5px;
   }
-  
-  .header h2 {
-    font-size: 24px;
-    color: #000000;
-    margin: 0 100px;
+
+  .file-name {
+    font-size: 9px;
   }
-  
-  .divider {
-    border-bottom: 2px solid #000000;
-    margin: 0 100px;
-  }
-  
-  /* Styling untuk isi konten */
-  .content {
-    padding: 20px;
-    font-size: 16px;
-    color: #555;
-    margin: 0 100px;
-  }
-  
-  .ajukan-permohonan {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .btn-ajukan-permohonan {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  /* Responsive layout */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    /* Sesuaikan margin pada header */
-    .header h2 {
-      margin: 10px 0;
-    }
-  
-    /* Sesuaikan margin pada divider */
-    .divider {
-      margin: 10px 0;
-    }
-  
-    /* Sesuaikan margin pada isi konten */
-    .content {
-      margin: 0;
-    }
-  
-    /* Atur ulang lebar kolom nama dokumen dan action */
-    .nama-dokumen,
-    .action {
-      flex: 1;
-    }
-  
-    /* Atur ulang tata letak tombol action */
-    .action {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    /* Atur ulang jarak antara tombol action */
-    .btn-action:not(:last-child) {
-      margin-right: 0;
-      margin-bottom: 5px;
-    }
-  }
-  
+}
